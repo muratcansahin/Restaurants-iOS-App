@@ -9,6 +9,10 @@
 import UIKit
 
 class RestaurantCreateTableViewController: UITableViewController, UITextFieldDelegate {
+    
+    @IBOutlet weak var nameField: UITextField!
+    
+    @IBOutlet weak var descriptionTextView: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +46,21 @@ class RestaurantCreateTableViewController: UITableViewController, UITextFieldDel
     }
     
     @IBAction func didPressCancel(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func didPressDone(_ sender: UIBarButtonItem) {
+        
+        let presentingNavigationController = presentingViewController as! UINavigationController
+        
+        let masterViewController = presentingNavigationController.viewControllers[0] as! RestaurantMasterViewController
+        
+        let restaurant = Restaurant(identifier: UInt64(masterViewController.restaurants.count), name: nameField.text!.replacingOccurrences(of: "\u{00a0}", with: " "), description: descriptionTextView.text)
+        
+        masterViewController.restaurants.append(restaurant)
+        
+        masterViewController.tableView.reloadData()
+        
         dismiss(animated: true, completion: nil)
     }
 }

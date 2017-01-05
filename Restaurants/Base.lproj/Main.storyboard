@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection id="03J-oW-AUS">
+                            <tableViewSection headerTitle="General Information" id="03J-oW-AUS">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Raj-BR-nxR">
-                                        <rect key="frame" x="0.0" y="35" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Raj-BR-nxR" id="wCZ-FT-JfJ">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -61,14 +61,28 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="wzD-ba-WbF">
+                            <tableViewSection headerTitle="Description" id="wzD-ba-WbF">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="dLu-fl-6GY">
-                                        <rect key="frame" x="0.0" y="115" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="132" id="dLu-fl-6GY">
+                                        <rect key="frame" x="0.0" y="157" width="320" height="132"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dLu-fl-6GY" id="FNr-QX-COb">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="131.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OjR-Yk-i37">
+                                                    <rect key="frame" x="8" y="8" width="304" height="116"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="OjR-Yk-i37" firstAttribute="top" secondItem="FNr-QX-COb" secondAttribute="top" constant="8" id="4Da-wR-TzV"/>
+                                                <constraint firstAttribute="trailing" secondItem="OjR-Yk-i37" secondAttribute="trailing" constant="8" id="JHz-gh-1fG"/>
+                                                <constraint firstAttribute="bottom" secondItem="OjR-Yk-i37" secondAttribute="bottom" constant="7.5" id="as7-Ow-cZu"/>
+                                                <constraint firstItem="OjR-Yk-i37" firstAttribute="leading" secondItem="FNr-QX-COb" secondAttribute="leading" constant="8" id="rRu-sL-lXG"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -85,8 +99,16 @@
                                 <action selector="didPressCancel:" destination="XUa-uK-xNN" id="ikW-Ek-Hmo"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="EwM-oG-dZh"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="EwM-oG-dZh">
+                            <connections>
+                                <action selector="didPressDone:" destination="XUa-uK-xNN" id="jrk-KN-1pr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="descriptionTextView" destination="OjR-Yk-i37" id="Ink-9e-atJ"/>
+                        <outlet property="nameField" destination="lzZ-gt-aQs" id="yJZ-4t-u6n"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Zn-YC-gU3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -274,6 +296,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="hA3-AA-aJQ">
+                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="XUa-uK-xNN" kind="relationship" relationship="rootViewController" id="xz2-4Y-h3j"/>
                     </connections>
